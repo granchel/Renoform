@@ -1,0 +1,68 @@
+<div class="container">
+   
+    <form class="row g-3" [formGroup]="formPlaca">
+      <div class="col-md-6">
+        <label for="inputIdentificador" class="form-label">ID</label>
+        <input type="text" class="form-control" 
+        name="identificador"
+        id="inputIdentificador"
+        formControlName="id"
+        [ngClass]="{'is-valid': idValid,'is-invalid' : idValid==false}">
+
+        <div *ngIf="idValid == false"
+     class="alert alert-danger">El id tiene que tener un rango de caracteres minimo de 3 i es requerido</div>
+        
+      </div>
+
+      <div class="col-md-6">
+        <label for="inputName" class="form-label">Name</label>
+        <input type="text" class="form-control" 
+        name="name"  
+        id="inputName"
+        formControlName="name"
+        [ngClass]="{'is-valid': nameValid.valid && nameValid.touched,
+       'is-invalid': nameValid.invalid && nameValid.touched}">
+
+       <div *ngIf="nameValid.touched && nameValid.invalid"
+     class="alert alert-danger">Nombre requerido</div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="localitat" class="form-label">Localitat</label>
+        <input type="text" class="form-control"
+        name="localitat"  
+        id="localitat" 
+        formControlName="localitat"
+        
+        [ngClass]="{'is-valid': localitatValid.valid && localitatValid.touched,
+        'is-invalid': localitatValid.invalid && localitatValid.touched}"
+        >
+        <div *ngIf="localitatValid.touched && localitatValid.invalid"
+        class="alert alert-danger">Localitat requerida</div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="energia" class="form-label">Energia</label>
+        <input type="text" class="form-control"
+        name="energia"  
+        id="energia" 
+        formControlName="energia"
+        
+        [ngClass]="{'is-valid': energiaValid.valid && energiaValid.touched,
+        'is-invalid': energiaValid.invalid && energiaValid.touched}"
+        >
+        <div *ngIf="energiaValid.touched && energiaValid.invalid"
+        class="alert alert-danger">Energia requerida</div>
+      </div>
+      
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </form>
+   
+  <hr>
+  <pre>
+      valid: {{formPlaca.valid}}
+  formulari: {{formPlaca.value | json}}
+  </pre>
+  </div>

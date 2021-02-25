@@ -1,0 +1,47 @@
+<div class="container">
+    <form class="row g-3" #formPlaca="ngForm" (ngSubmit)="editar()" novalidate>
+      <div class="col-md-6">
+        <label for="identificador" class="form-label">Identificador</label>
+        <input type="text" class="form-control"
+        name="identificador"
+        id="identificador"
+        [(ngModel)]="placa.id"
+        #inputId="ngModel"
+        required
+        minlength="1"
+        maxlength="20"
+    
+        [ngClass]="{'is-valid': inputId.valid && inputId.touched,
+        'is-invalid': inputId.invalid && inputId.touched}"
+        >
+        <div *ngIf="inputId.touched && inputId.invalid"
+           class="alert alert-danger">Id requerido</div>
+    
+      </div>
+      <div class="col-md-6">
+        <label for="localitat" class="form-label">Localitat</label>
+        <input type="text" class="form-control"
+        name="localitat"  id="localitat" [(ngModel)]="placa.localitat"
+        #inputlocalitat="ngModel"
+        required
+        [ngClass]="{'is-valid': inputlocalitat.valid && inputlocalitat.touched,
+        'is-invalid': inputlocalitat.invalid && inputlocalitat.touched}"
+        >
+        <div *ngIf="inputlocalitat.touched && inputlocalitat.invalid"
+        class="alert alert-danger">Localitat requerida</div>
+      </div>
+     
+      <div class="col-12">
+        <button type="submit"
+    
+        class="btn btn-primary">Actualitzar</button>
+      </div>
+    </form>
+    
+    <hr>
+    <pre>
+    id: {{inputId.valid}}
+    formulari: {{formPlaca.value | json}}
+    formulari valid: {{formPlaca.valid}}
+    </pre>
+    </div>

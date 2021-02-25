@@ -1,0 +1,14 @@
+<div class="container">
+  <br> <br>
+Buscar per localitat :<input type="text" name="searchPlaca" id="searchPlaca" [(ngModel)]="criteri"/>
+<br> <br>
+<a [routerLink]="['/central','new']" class="btn btn-dark">New Moli</a>
+<br> <br>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    
+    <app-llistes-items-central [central]="central" *ngFor="let central of centrals | filterPlaques:criteri"
+    (rattingChanged)="changeRatting($event, central)">
+    </app-llistes-items-central>
+  
+  </div>
+</div>

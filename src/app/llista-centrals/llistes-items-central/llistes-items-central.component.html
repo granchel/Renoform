@@ -1,0 +1,19 @@
+<div class="col">
+    <div class="card  h-100" [appResaltado]="color">
+        <img src="assets/img/central.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h3 class="card-title">{{central?.name}}</h3>
+          Identificador :<p class="card-text"> {{central?.id}} </p>
+          localitat :<p class="card-text" [ngStyle]="{'color': 'red'}" > {{central?.localitat | uppercase}} </p>
+          Energia :<p class="card-text" (mouseleave)="auxRatting=central.ratting">
+          <span class="star" *ngFor="let i of [1,2,3,4,5,6,7,8,9]"
+          (click)="puntuar(i)"
+          (mouseenter)="auxRatting = i"
+           >
+         {{ i <= auxRatting ? '▮' : '▯' }}
+       </span>
+       <br><br>
+  
+       <a [routerLink]="['/central',central.id]" class="btn btn-primary">Details</a> 
+         </div>
+      </div>

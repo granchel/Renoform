@@ -1,0 +1,12 @@
+<div class="container">
+  <br> <br>
+  Buscar per localitat :<input type="text" name="searchPlaca" id="searchPlaca" [(ngModel)]="criteri"/>
+  <br> <br>
+  <a [routerLink]="['/placa','new']" class="btn btn-dark">New Placa</a>
+  <br> <br>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <app-llistes-items [placa]="placa" *ngFor="let placa of plaques | filterPlaques:criteri"
+  (rattingChanged)="changeRatting($event, placa)">
+  </app-llistes-items>
+</div>
+</div>
